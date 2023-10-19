@@ -11,3 +11,6 @@ I confirm user details
     Checkout: Enter Last Name    ${user_map}[${default_username}][lastname]
     Checkout: Enter Zip Code     ${user_map}[${default_username}][zip]
     Checkout: Click Continue
+
+I cancel checkout
+    Checkout: Click Cancel

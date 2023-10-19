@@ -16,6 +16,13 @@ Scenario: User is unable to checkout without products in the basket
      When I view the basket contents
      Then checkout should not be possible
 
+Scenario: User retains basket content after cancelling checkout
+    Given there are some products in the basket
+      And the basket contents are displayed
+      And the checkout process has begun
+     When I cancel checkout
+     Then basket should indicate correct product count
+
 Scenario: During checkout user can see an overview of product listing
     Given there are some products in the basket
       And the basket contents are displayed
