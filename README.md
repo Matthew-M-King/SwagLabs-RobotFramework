@@ -1,6 +1,8 @@
 # SwagLabs Automation Suite
 
-This repository contains a comprehensive suite of automation scripts written in Robot Framework for an SwagLabs demo site
+This repository contains a comprehensive suite of automation scripts written in Robot Framework for [Swag Labs](https://www.saucedemo.com/) demo site
+
+
 
 ## 📌 Libraries and Resources Used
 
