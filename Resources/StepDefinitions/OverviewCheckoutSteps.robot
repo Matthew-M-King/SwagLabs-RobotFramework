@@ -3,6 +3,15 @@ Resource   ../POM/OverviewCheckoutPage.robot
 
 
 *** Keywords ***
+### GIVEN ###
+checkout is finished
+    CheckoutOverview: Click Finish
+
+### WHEN ###
+I finish checkout
+    CheckoutOverview: Click Finish
+
+
 ### THEN ###
 shipping and card details should be correct
     CheckoutOverview: Assert Shipping Provider Title

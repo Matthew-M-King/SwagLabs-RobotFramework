@@ -10,10 +10,14 @@ ${locator_summary_info}       //div[@class="summary_info_label"][contains(text()
 ${locator_summary_value}      //div[@class="summary_value_label"][contains(text(), "{0}")]
 ${locator_subtotal_label}     //div[@class="summary_subtotal_label"]
 ${locator_summary_tax_label}  //div[@class="summary_tax_label"]
-${locator_gtotal_label}       //div[@class="summary_info_label summary_total_label"]
+${locator_gtotal_label}       //div[contains(@class, "summary_total_label")]
+${locator_finish_btn}         //button[@data-test="finish"]
 
 
 *** Keywords ***
+CheckoutOverview: Click Finish
+    Click Element    ${locator_finish_btn}
+
 CheckoutOverview: Get Price Total
     ${total_price}  Set Variable  ${0.00}
     FOR  ${product}  IN    @{current_product_tracker}

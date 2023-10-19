@@ -2,6 +2,7 @@
 Documentation     Checkout
 ...              
 ...               Tests related to user checkout
+Library           SeleniumLibrary
 Resource          ../Resources/Setup.robot
 Suite Setup       Setup Suite
 Suite Teardown    Teardown Suite
@@ -37,6 +38,21 @@ Scenario: During checkout, user can see shipping and card details
       And the basket contents are displayed
      When I move to the "CheckoutOverview" page
      Then shipping and card details should be correct
+
+Scenario: User can see a final message when checkout is completed
+    Given there are minimum products in the basket
+      And the "CheckoutOverview" page is displayed
+     When I finish checkout
+     Then Page Should Contain    Thank you for your order!
+      And Page Should Contain    Your order has been dispatched, and will arrive just as fast as the pony can get there!
+
+Scenario: User can move back to the home page after checkout
+    Given there are minimum products in the basket
+      And the "CheckoutOverview" page is displayed
+      And checkout is finished
+     When I move back to the home page
+     Then the "ProductInventory" page should be displayed
+      And there isn't any products in the basket
 
 Scenario: During checkout with one product, user can see a calculation of product sub total
     ...    minimum  subtotal

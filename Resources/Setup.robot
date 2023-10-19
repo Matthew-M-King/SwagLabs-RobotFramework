@@ -12,6 +12,7 @@ Resource        ../Resources/StepDefinitions/AddressFormSteps.robot
 Resource        ../Resources/StepDefinitions/OverviewCommonSteps.robot
 Resource        ../Resources/StepDefinitions/OverviewBasketSteps.robot
 Resource        ../Resources/StepDefinitions/OverviewCheckoutSteps.robot
+Resource        ../Resources/StepDefinitions/OrderCompleteSteps.robot
 
 
 *** Variables ***
