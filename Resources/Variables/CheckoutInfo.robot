@@ -1,0 +1,23 @@
+*** Variables ***
+${checkout_info_mapping}  
+...  {
+...      "Payment": 
+...      {
+...          "title": "Payment Information",
+...          "card": "SauceCard #31337"
+...      },
+...      "Shipping":
+...      {
+...          "title": "Shipping Information",
+...          "provider": "Free Pony Express Delivery!"
+...      },
+...      "Total":
+...      {
+...          "title": "Price Total",
+...          "price": "Item total: $\{0}"
+...      },
+...      "GrandTotal": 
+...      {
+...          "total": "Total: ${0}"
+...      }
+...  }
