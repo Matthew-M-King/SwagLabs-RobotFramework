@@ -1,5 +1,5 @@
 *** Settings ***
-Resource  ../Variables/Urls.robot
+Variables  ../Fixtures/Urls.yml
 Resource  ../POM/_Main.robot
 Library   ../Custom/WriteMultiFailureResult.py
 Library    SeleniumLibrary
@@ -54,9 +54,9 @@ ${r:(I )?}check the position of the main title
 ### THEN ###
 the "${page}" page should be displayed
     IF   "${page}"=="Main" or "${page}"=="Login"
-        ${expected_page}  Set Variable   ${page_mapping}[Main]
+        ${expected_page}  Set Variable   ${Urls}[BaseUrl]
     ELSE
-        ${expected_page}  Catenate   ${page_mapping}[Main]${page_mapping}[${page}]
+        ${expected_page}  Catenate   ${Urls}[BaseUrl]${Urls}[${page}]
     END
     ${actual_page}  Get Location
     Should Be Equal As Strings    ${expected_page}    ${actual_page}

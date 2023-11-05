@@ -3,8 +3,8 @@ Library    Collections
 Resource   ../POM/_Main.robot
 Resource   ../POM/ProductListingPage.robot
 Resource   ../POM/ProductDetailsPage.robot
-Resource   ../Variables/Users.robot
-Resource   ../Variables/Products.robot
+Variables  ../Fixtures/Users.yml
+Variables  ../Fixtures/ProductDetails.yml
 
 
 *** Keywords ***
@@ -54,13 +54,12 @@ ${r:(I )?}sort products by: ${sort_option}
     Set Test Variable  ${current_sort_option}   ${sort_option}
 
 ${r:(I )?}look at each product in detail
-    ${product_details}  Evaluate   ${product_details}
-    FOR  ${product}  IN  @{product_details}
+    FOR  ${product}  IN  @{ProductDetails}
         Products: Click Product Name Link   ${product}
         Try Assert  ProductDetails: Assert Name         ${product}
-        Try Assert  ProductDetails: Assert Price        ${product}  ${product_details}[${product}][price]
-        Try Assert  ProductDetails: Assert Desc         ${product}  ${product_details}[${product}][desc]
-        Try Assert  ProductDetails: Assert Image        ${product}  ${product_details}[${product}][image]
+        Try Assert  ProductDetails: Assert Price        ${product}  ${ProductDetails}[${product}][price]
+        Try Assert  ProductDetails: Assert Desc         ${product}  ${ProductDetails}[${product}][desc]
+        Try Assert  ProductDetails: Assert Image        ${product}  ${ProductDetails}[${product}][image]
         Products: Click Back To Products
     END
 
@@ -69,17 +68,16 @@ the products should be sorted
     Run Keyword  Products: Assert Sorted: ${current_sort_option}
 
 the listed products should be correct
-    ${expected_product_details}  Evaluate   ${product_details}
-    FOR  ${product}  IN  @{expected_product_details}
+    FOR  ${product}  IN  @{ProductDetails}
         Should Be Equal As Strings
-        ...  ${expected_product_details}[${product}][price]
+        ...  ${ProductDetails}[${product}][price]
         ...  ${current_product_details}[${product}][price]
         ...  msg=Price doesn't match for product: ${product}
         Should Contain
         ...    ${current_product_details}[${product}][desc]
-        ...    ${expected_product_details}[${product}][desc]
+        ...    ${ProductDetails}[${product}][desc]
         Should Be Equal As Strings
-        ...  ${page_mapping}[Main]${expected_product_details}[${product}][image]
+        ...  ${Urls}[BaseUrl]${ProductDetails}[${product}][image]
         ...  ${current_product_details}[${product}][image]
         ...  msg=Image doesn't match for product: ${product}\n
     END

@@ -26,11 +26,11 @@ Try Assert
 
 Main: Go To Page
     [Arguments]   ${page}
-    Go To    ${page_mapping}[Main]${page_mapping}[${page}]
+    Go To    ${Urls}[BaseUrl]${Urls}[${page}]
 
 Main: Tab to Page
     [Arguments]   ${page}
-    Execute Javascript   window.open('${page_mapping}[Main]${page_mapping}[${page}]');
+    Execute Javascript   window.open('${Urls}[BaseUrl]${Urls}[${page}]');
     Main: Switch To Next Tab
 
 Main: Switch To Next Tab

@@ -1,6 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
-Resource   ../Variables/LoginErrors.robot
+Variables   ../Fixtures/LoginErrors.yml
 
 
 *** Variables ***
@@ -35,6 +35,6 @@ Login: Perform User Login
 Login: Assert Error Message
     [Arguments]  ${msg_type}
     Wait Until Element Is Visible        ${locator_error_msg}
-    ${expected_message}  Set Variable    ${error_msg_type_maps}[${msg_type}]
+    ${expected_message}  Set Variable    ${LoginErrors}[${msg_type}]
     ${actual_message}    Get Text        ${locator_error_msg}
     Should Contain   ${actual_message}   ${expected_message}

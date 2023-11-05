@@ -2,7 +2,7 @@
 Library    SeleniumLibrary
 Library    String
 Library    Dialogs
-Resource   ../Variables/CheckoutInfo.robot
+Variables   ../Fixtures/CheckoutInfo.yml
 
 
 *** Variables ***
@@ -35,35 +35,29 @@ CheckoutOverview: Calculate Tax Amount
     Return From Keyword   ${formatted_tax_amount}
 
 CheckoutOverview: Assert Shipping Provider Title
-    ${checkout_info_mapping}     Evaluate    ${checkout_info_mapping}
-    ${locator}   Format String   ${locator_summary_info}   ${checkout_info_mapping}[Shipping][title]
+    ${locator}   Format String   ${locator_summary_info}   ${CheckoutInfo}[Shipping][title]
     Element Should Be Visible    ${locator}
 
 CheckoutOverview: Assert Payment Title
-    ${checkout_info_mapping}     Evaluate    ${checkout_info_mapping}
-    ${locator}   Format String   ${locator_summary_info}   ${checkout_info_mapping}[Payment][title]
+    ${locator}   Format String   ${locator_summary_info}   ${CheckoutInfo}[Payment][title]
     Element Should Be Visible    ${locator}
 
 CheckoutOverview: Assert Price Total Title
-    ${checkout_info_mapping}     Evaluate    ${checkout_info_mapping}
-    ${locator}   Format String   ${locator_summary_info}   ${checkout_info_mapping}[Total][title]
+    ${locator}   Format String   ${locator_summary_info}   ${CheckoutInfo}[Total][title]
     Element Should Be Visible    ${locator}
 
 CheckoutOverview: Assert Shipping Provider
-    ${checkout_info_mapping}     Evaluate    ${checkout_info_mapping}
-    ${locator}   Format String   ${locator_summary_value}   ${checkout_info_mapping}[Shipping][provider]
+    ${locator}   Format String   ${locator_summary_value}   ${CheckoutInfo}[Shipping][provider]
     Element Should Be Visible    ${locator}
 
 CheckoutOverview: Assert Payment Card
-    ${checkout_info_mapping}     Evaluate    ${checkout_info_mapping}
-    ${locator}   Format String   ${locator_summary_value}   ${checkout_info_mapping}[Payment][card]
+    ${locator}   Format String   ${locator_summary_value}   ${CheckoutInfo}[Payment][card]
     Element Should Be Visible    ${locator}
 
 CheckoutOverview: Assert Price Total
     ${sub_total_price}   CheckoutOverview: Get Price Total
-    ${checkout_info_mapping}       Evaluate    ${checkout_info_mapping}
-    ${price_text}  Format String   ${checkout_info_mapping}[Total][price]  ${sub_total_price}
-    ${actual_sub_total}   Get Text   ${locator_subtotal_label}  
+    ${price_text}  Format String   ${CheckoutInfo}[Total][price]  ${sub_total_price}
+    ${actual_sub_total}   Get Text   ${locator_subtotal_label}
     Should Be Equal As Strings    ${actual_sub_total}    ${price_text}
 
 CheckoutOverview: Assert Applied Tax

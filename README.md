@@ -38,15 +38,13 @@ This repository contains a comprehensive suite of automation scripts written in 
 |   |   |  OverviewCommonSteps.robot
 |   |   |  ProductListingSteps.robot
 │   │
-│   └───Variables
-|   |   |  CheckoutInfo.robot
-|   |   |  LoginErrors.robot
-|   |   |  LoginSteps.robot
-|   |   |  Products.robot
-|   |   |  SortOptions.robot
-|   |   |  Urls.robot
-|   |   |  OverviewCommonSteps.robot
-|   |   |  Users.robot
+│   └───Fixtures
+|   |   |  CheckoutInfo.yml
+|   |   |  LoginErrors.yml
+|   |   |  ProductDetails.yml
+|   |   |  SortOptions.yml
+|   |   |  Urls.yml
+|   |   |  Users.yml
 |   |   Setup.robot
 └───Tests
 |   |  __init__.robot
