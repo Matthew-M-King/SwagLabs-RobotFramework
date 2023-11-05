@@ -39,18 +39,18 @@ Scenario: Invalid Unknown User Login               unknown_user
 
 Scenario: Users on the login page don't have accessability issues
     [Tags]  accessability
-     When I check for accessability problems
+     When user checks for accessability problems
      Then the page should be accessible
 
 
 *** Keywords ***
 Scenario Outline: Valid User Login
     [Arguments]  ${username}
-    When I try to login as "${username}" user
+    When user tries to login as "${username}" user
     Then the "ProductInventory" page should be displayed
 
 Scenario Outline: Invalid User Login
     [Arguments]  ${username}
-    When I try to login as "${username}" user
+    When user tries to login as "${username}" user
     Then the "Login" page should be displayed
      And error message related to "${username}" user should be displayed

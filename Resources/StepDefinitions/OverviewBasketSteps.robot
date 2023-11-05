@@ -8,7 +8,7 @@ the checkout process has begun
     Basket: Click Checkout Button
 
 ### WHEN ###
-I begin the checkout process
+${r:(user )?}begins the checkout process
     Basket: Click Checkout Button
 
 ### THEN ###

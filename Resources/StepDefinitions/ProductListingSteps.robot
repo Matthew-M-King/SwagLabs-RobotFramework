@@ -31,29 +31,29 @@ there are ${type:(minimum|maximum|some|no)?} products in the basket added from p
     Set Test Variable  ${current_product_amount}   ${amount}
 
 ### WHEN ###
-${r:(I )?}view products
+${r:(user )?}views products
     ${details}  Products: Get Product Details
     Set Test Variable  ${current_product_details}  ${details}
 
-${r:(I )?}add the following number of products to the basket: ${amount}
+${r:(user )?}adds the following number of products to the basket: ${amount}
     Products: Add Number Of Products To Basket  ${amount}
     Set Test Variable  ${current_product_amount}   ${amount}
 
-${r:(I )?}remove some products from the basket
+${r:(user )?}removes some products from the basket
     Products: Remove Subset
 
-${r:(I )?}remove some products from the basket in details view
+${r:(user )?}removes some products from the basket in details view
     Products: Remove Subset  from_details_view=${TRUE}
 
-${r:(I )?}remove all products from the basket
+${r:(user )?}removes all products from the basket
     Products: Remove Number Of Products From Basket    ${current_product_amount}
     Set Test Variable    ${current_product_amount}    0
 
-${r:(I )?}sort products by: ${sort_option}
+${r:(user )?}sorts products by: ${sort_option}
     Products: Sort   ${sort_option}
     Set Test Variable  ${current_sort_option}   ${sort_option}
 
-${r:(I )?}look at each product in detail
+${r:(user )?}looks at each product in detail
     FOR  ${product}  IN  @{ProductDetails}
         Products: Click Product Name Link   ${product}
         Try Assert  ProductDetails: Assert Name         ${product}

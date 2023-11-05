@@ -14,21 +14,21 @@ Test Tags         checkout
 *** Test Cases ***
 Scenario: User is unable to checkout without products in the basket
     Given there are no products in the basket
-     When I view the basket contents
+     When user views the basket contents
      Then checkout should not be possible
 
 Scenario: User retains basket content after cancelling checkout
     Given there are some products in the basket
       And the basket contents are displayed
       And the checkout process has begun
-     When I cancel checkout
+     When user cancels checkout
      Then basket should indicate correct product count
 
 Scenario: During checkout user can see an overview of product listing
     Given there are some products in the basket
       And the basket contents are displayed
       And the checkout process has begun
-     When I confirm user details
+     When user confirms their details
      Then the "CheckoutOverview" page should be displayed
       And all the selected products should be listed
       And the product details should be correct
@@ -36,13 +36,13 @@ Scenario: During checkout user can see an overview of product listing
 Scenario: During checkout, user can see shipping and card details
     Given there are minimum products in the basket
       And the basket contents are displayed
-     When I move to the "CheckoutOverview" page
+     When user moves to the "CheckoutOverview" page
      Then shipping and card details should be correct
 
 Scenario: User can see a final message when checkout is completed
     Given there are minimum products in the basket
       And the "CheckoutOverview" page is displayed
-     When I finish checkout
+     When user finishes checkout
      Then Page Should Contain    Thank you for your order!
       And Page Should Contain    Your order has been dispatched, and will arrive just as fast as the pony can get there!
 
@@ -50,7 +50,7 @@ Scenario: User can move back to the home page after checkout
     Given there are minimum products in the basket
       And the "CheckoutOverview" page is displayed
       And checkout is finished
-     When I move back to the home page
+     When user moves back to the home page
      Then the "ProductInventory" page should be displayed
       And there isn't any products in the basket
 
@@ -96,5 +96,5 @@ Scenario Outline: Check Calculated Value
     [Arguments]  ${amount}  ${value_to_check}
     Given there are ${amount} products in the basket
       And the basket contents are displayed
-     When I move to the "CheckoutOverview" page
+     When user moves to the "CheckoutOverview" page
      Then the ${value_to_check} of products should be correct

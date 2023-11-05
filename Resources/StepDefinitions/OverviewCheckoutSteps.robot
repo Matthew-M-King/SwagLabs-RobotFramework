@@ -8,7 +8,7 @@ checkout is finished
     CheckoutOverview: Click Finish
 
 ### WHEN ###
-I finish checkout
+${r:(user )?}finishes checkout
     CheckoutOverview: Click Finish
 
 
