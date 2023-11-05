@@ -1,10 +1,12 @@
 *** Settings ***
 Library         SeleniumLibrary
+
+Variables       ../Resources/Fixtures/Urls.yml
+Variables       ../Resources/Fixtures/Users.yml
+
+Resource        Settings.robot
 Resource        ../Resources/POM/_Main.robot
 Resource        ../Resources/POM/LoginPage.robot
-Variables        ../Resources/Fixtures/Urls.yml
-Variables        ../Resources/Fixtures/Users.yml
-
 Resource        ../Resources/StepDefinitions/_Main.robot
 Resource        ../Resources/StepDefinitions/ProductListingSteps.robot
 Resource        ../Resources/StepDefinitions/LoginSteps.robot
