@@ -95,6 +95,11 @@ This repository contains a comprehensive suite of automation scripts written in 
    - Navigate to the directory of the Robot scripts.
    - Use the command: `robot <script_name>.robot`.
 
+   OR
+   
+   - Execute bat file "run_tests.bat" - this will perform tests with the standard user and problem user as well as login tests.
+   - The results of these tests will be automatically combined with rebot.
+
 3. **Reports**:
    - Robot Framework will produce logs and reports post-execution. To view test results, open `report.html` in a web browser.
 
