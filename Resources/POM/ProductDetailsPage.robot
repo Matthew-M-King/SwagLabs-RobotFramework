@@ -1,9 +1,7 @@
 *** Settings ***
-Library   SeleniumLibrary
-Library   Collections
-Library   String
-
-Resource  ../Variables/SortOptions.robot
+Library     SeleniumLibrary
+Library     Collections
+Library     String
 
 
 *** Variables ***

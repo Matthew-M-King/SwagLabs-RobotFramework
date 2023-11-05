@@ -3,7 +3,7 @@ Library   SeleniumLibrary
 Library   Collections
 Library   String
 
-Resource  ../Variables/SortOptions.robot
+Variables    ../Fixtures/SortOptions.yml
 Resource    ProductDetailsPage.robot
 
 
@@ -23,7 +23,7 @@ ${locator_text}                      [contains(text(), "{0}")]
 *** Keywords ***
 Products: Sort
     [Arguments]  ${option}
-    Select From List By Value   ${locator_sort_container}   ${sort_options}[${option}]
+    Select From List By Value   ${locator_sort_container}   ${SortOptions}[${option}]
 
 Products: Get Image Src
     [Arguments]  ${index}

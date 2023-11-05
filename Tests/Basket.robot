@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation     Basket
-...     
+...
 ...               Tests related to basket (cart) of selected products
 Resource          ../Resources/Setup.robot
 Suite Setup       Setup Suite

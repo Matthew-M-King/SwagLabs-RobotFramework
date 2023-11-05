@@ -2,8 +2,8 @@
 Library         SeleniumLibrary
 Resource        ../Resources/POM/_Main.robot
 Resource        ../Resources/POM/LoginPage.robot
-Resource        ../Resources/Variables/Urls.robot
-Resource        ../Resources/Variables/Users.robot
+Variables        ../Resources/Fixtures/Urls.yml
+Variables        ../Resources/Fixtures/Users.yml
 
 Resource        ../Resources/StepDefinitions/_Main.robot
 Resource        ../Resources/StepDefinitions/ProductListingSteps.robot
@@ -23,7 +23,7 @@ ${tax_rate}                ${8.00}
 
 *** Keywords ***
 Setup Suite
-    Open Browser    ${page_mapping}[Main]    browser=chrome
+    Open Browser    ${Urls}[BaseUrl]    browser=chrome
     Maximize Browser Window
 
 Teardown Suite
