@@ -26,28 +26,28 @@ the basket contents are displayed
     Main: Click Cart
 
 ### WHEN ###
-${r:(I )?}view the basket contents
+${r:(user )?}views the basket contents
     Main: Click Cart
 
-${r:(I )?}switch to the previous tab
+${r:(user )?}switches to the previous tab
     Main: Switch To Previous Tab
 
-${r:(I )?}move to the "${page}" page
+${r:(user )?}moves to the "${page}" page
     Main: Go To Page    ${page}
 
-${r:(I )?}check for accessability problems
+${r:(user )?}checks for accessability problems
     &{results}=    Run Accessibility Tests    AxeResults.json
     Set Test Variable  ${current_axe_results}   ${results}
 
-${r:(I )?}check the position of the shopping cart icon
+${r:(user )?}checks the position of the shopping cart icon
     Try Assert  Main: Assert Element Fully Inside Container Element   
     ...    ${locator_header_lbl}   ${locator_cart_link}
 
-${r:(I )?}check the position of the menu icon
+${r:(user )?}checks the position of the menu icon
     Try Assert  Main: Assert Element Fully Inside Container Element   
     ...    ${locator_header_lbl}   ${locator_menu}
 
-${r:(I )?}check the position of the main title
+${r:(user )?}checks the position of the main title
     Try Assert  Main: Assert Element Fully Inside Container Element   
     ...    ${locator_header_lbl}   ${locator_app_logo}
 

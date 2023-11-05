@@ -4,5 +4,5 @@ Resource   ../POM/OrderCompletePage.robot
 
 *** Keywords ***
 ### WHEN ###
-I move back to the home page
+${r:(user )?}moves back to the home page
     OrderComplete: Click Back To Home
