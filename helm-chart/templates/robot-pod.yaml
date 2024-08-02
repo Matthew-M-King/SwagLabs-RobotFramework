@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  initContainers:
+    - image: ghcr.io/matthew-m-king/testrunner:3
+      name: robot-testrunner
+      imagePullPolicy: Always
+      volumeMounts:
+        - name: data
+          mountPath: /home/test/output
+      envFrom:
+        - secretRef:
+            name: testrunner_secrets
+      env:
+        - name: BUILDKITD_FLAGS
+          value: --oci-worker-no-process-sandbox
+        - name: DOCKER_CONFIG
+          value: /.docker
+        - name: ENV_SETUP
+          value: setup_k8s.sh
+        - name: SUITES
+          value: "System_Config"
+        - name: ENV
+          value: "web-platform"
+        - name: TEST_NAME
+          value:  {{.Values.testName}}
+        - name: DRY_RUN
+          value:  "{{.Values.dryRun}}"
+      command: [sh, -c]
+      args:
+        - |
+          #!/bin/bash
+          envsubst < ENV/env-template.json > ENV/env-template.json
+          cat ENV/env-template.json
+          ./run_suite.sh -v Browser:Chrome -v headless:True -v db_backup:yes $TEST_NAME | true
+          echo "###LOG###"
+          cat /home/test/output/log.html
+          echo "###LOG###"
+          echo "###REPORT###"
+          cat /home/test/output/report.html
+          echo "###REPORT###"
+          ls -latr /home/test/output
+          echo $TEST_NAME
+  containers:
+    # an app
+    - name: app
+      image: alpine
+      command:
+        - sh
+        - -c
+        - |
+          echo "app is running" && ls -latr /home/test/output
+          while true; do sleep 2; done
+      volumeMounts:
+        - name: data
+          mountPath: /home/test/output
+  volumes:
+    - name: data
+      emptyDir: {}
+  restartPolicy: Never
+  imagePullSecrets:
+    - name: dirty-registry-secret
