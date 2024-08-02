@@ -21,7 +21,7 @@ spec:
         - name: ENV_SETUP
           value: setup_k8s.sh
         - name: SUITES
-          value: "System_Config"
+          value: "Tests"
         - name: ENV
           value: "web-platform"
         - name: TEST_NAME
