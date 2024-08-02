@@ -1,0 +1,25 @@
+apiVersion: skaffold/v3
+kind: Config
+metadata:
+  name: swagger
+profiles:
+  - name: robot-web-env
+    deploy:
+      helm:
+        releases:
+          - name: tests
+            chartPath: helm-chart
+            namespace: robot-web-env
+            setValueTemplates:
+              robotcmd: "Tests"
+              dryRun: "false"
+  - name: robot-local-env
+    deploy:
+      helm:
+        releases:
+          - name: tests
+            chartPath: helm-chart
+            namespace: robot-local-env
+            setValueTemplates:
+              robotcmd: "Tests"
+              dryRun: "false"
