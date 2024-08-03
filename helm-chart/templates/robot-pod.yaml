@@ -5,21 +5,16 @@ metadata:
 spec:
   initContainers:
     - image: ghcr.io/matthew-m-king/testrunner:3
-      name: robot-testrunner
+      name: testrunner
       imagePullPolicy: Always
       volumeMounts:
         - name: data
           mountPath: /home/test/output
-      envFrom:
-        - secretRef:
-            name: testrunner_secrets
       env:
         - name: BUILDKITD_FLAGS
           value: --oci-worker-no-process-sandbox
         - name: DOCKER_CONFIG
           value: /.docker
-        - name: ENV_SETUP
-          value: setup_k8s.sh
         - name: SUITES
           value: "Tests"
         - name: ENV
@@ -44,7 +39,6 @@ spec:
           ls -latr /home/test/output
           echo $TEST_NAME
   containers:
-    # an app
     - name: app
       image: alpine
       command:
@@ -60,5 +54,3 @@ spec:
     - name: data
       emptyDir: {}
   restartPolicy: Never
-  imagePullSecrets:
-    - name: dirty-registry-secret

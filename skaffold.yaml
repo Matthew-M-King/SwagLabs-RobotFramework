@@ -3,23 +3,23 @@ kind: Config
 metadata:
   name: swagger
 profiles:
-  - name: robot-swaglabs-global
+  - name: swaglabs-global
     deploy:
       helm:
         releases:
           - name: tests
             chartPath: helm-chart
-            namespace: robot-swaglabs-global
+            namespace: swaglabs-global
             setValueTemplates:
               robotcmd: "Tests"
               dryRun: "false"
-  - name: robot-swaglabs-local
+  - name: swaglabs-local
     deploy:
       helm:
         releases:
           - name: tests
             chartPath: helm-chart
-            namespace: robot-swaglabs-local
+            namespace: swaglabs-local
             setValueTemplates:
               robotcmd: "Tests"
               dryRun: "false"
