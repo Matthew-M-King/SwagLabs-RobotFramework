@@ -4,7 +4,7 @@ metadata:
   name: {{ .Release.Name }}
 spec:
   initContainers:
-    - image: ghcr.io/matthew-m-king/testrunner:3
+    - image: ghcr.io/matthew-m-king/testrunner:4
       name: testrunner
       imagePullPolicy: Always
       volumeMounts:
