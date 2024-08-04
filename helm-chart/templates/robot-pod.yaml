@@ -29,7 +29,8 @@ spec:
       args:
         - |
           #!/bin/bash
-
+          set -e
+          echo "Starting the test suite..."
           
           if ! ./run_suite.sh -v Browser:Chrome -v headless:True -v db_backup:yes $TEST_NAME; then
             echo "Test suite failed."
