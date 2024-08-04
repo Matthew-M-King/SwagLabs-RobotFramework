@@ -6,7 +6,7 @@ metadata:
     app: testrunner
 spec:
   initContainers:
-    - image: ghcr.io/matthew-m-king/testrunner:5
+    - image: ghcr.io/matthew-m-king/testrunner:6
       name: testrunner
       imagePullPolicy: Always
       volumeMounts:
