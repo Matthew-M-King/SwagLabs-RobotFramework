@@ -29,10 +29,13 @@ spec:
       args:
         - |
           #!/bin/bash
-          #envsubst < ENV/env-template.json > ENV/env-template.json
-          #cat ENV/env-template.json
+
           
-          ./run_suite.sh -v Browser:Chrome -v headless:True -v db_backup:yes $TEST_NAME
+          if ! ./run_suite.sh -v Browser:Chrome -v headless:True -v db_backup:yes $TEST_NAME; then
+            echo "Test suite failed."
+            exit 1
+          fi
+          
           echo "###LOG###"
           cat /home/test/output/log.html
           echo "###LOG###"

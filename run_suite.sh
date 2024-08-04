@@ -1,4 +1,4 @@
-#!/bin/bash -x
+
 export LD_LIBRARY_PATH=$$LDLIBRARY_PATH:/usr/lib/x86_64-linux-gnu/odbc/
 # ROBOT_OPTIONS="--output output/output.xml --log output/log.html --report output/report.html"
 # if [ "$DRY_RUN" = "true" ]; then
