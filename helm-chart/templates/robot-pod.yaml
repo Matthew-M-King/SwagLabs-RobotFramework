@@ -27,8 +27,8 @@ spec:
       args:
         - |
           #!/bin/bash
-          envsubst < ENV/env-template.json > ENV/env-template.json
-          cat ENV/env-template.json
+          #envsubst < ENV/env-template.json > ENV/env-template.json
+          #cat ENV/env-template.json
           if ! ./run_suite.sh -v Browser:Chrome -v headless:True -v db_backup:yes $TEST_NAME; then
             echo "Test suite failed."
             exit 1
