@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: {{ .Release.Name }}
+  labels:
+    app: testrunner
 spec:
   initContainers:
     - image: ghcr.io/matthew-m-king/testrunner:4
