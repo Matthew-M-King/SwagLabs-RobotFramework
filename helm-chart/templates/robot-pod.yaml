@@ -28,7 +28,7 @@ spec:
       command: [sh, -c]
       args:
         - |
-          #!/bin/bash
+          #!/bin/bash -x
           set -e
           echo "Starting the test suite..."
           
